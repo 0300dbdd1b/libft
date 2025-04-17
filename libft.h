@@ -13,10 +13,11 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stddef.h> // size_t
-# include <unistd.h> // write
-# include <stdlib.h> // malloc, free
-# include <stdarg.h>
+# include <stddef.h>	// size_t
+# include <unistd.h>	// write
+# include <stdlib.h>	// malloc, free
+# include <stdarg.h>	// va_args
+# include <fcntl.h>		//open
 
 // ---------- Partie 1 : Fonctions Libc ----------
 int		ft_isalpha(int c);
@@ -85,5 +86,14 @@ int		ft_putptr(void *ptr);
 int		ft_printf(const char *str, ...);
 int		ft_putnbr(int n);
 int		ft_putnbr_unsigned(unsigned int n);
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE	128
+# endif
+char	*get_next_line(int fd);
+
+
+char	*ft_strcpy(char *dest, const char *src);
+char	*ft_strcat(char *dest, const char *src);
 
 #endif

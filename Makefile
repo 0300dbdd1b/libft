@@ -46,6 +46,11 @@ SRC     =	ft_isalpha.c	\
 			ft_printf.c					\
 			utils/ft_print_utils.c		\
 			utils/ft_putnbr.c			\
+			get_next_line.c				\
+			get_next_line_utils.c		\
+			ft_strcpy.c					\
+			ft_strcat.c					\
+
 
 OBJS		= $(SRC:.c=.o)
 CC      = cc
