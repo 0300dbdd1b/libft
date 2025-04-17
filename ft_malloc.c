@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noaddino <noaddino@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 23:40:01 by noaddino          #+#    #+#             */
-/*   Updated: 2025/04/17 23:40:02 by noaddino         ###   ########.fr       */
+/*   Created: 2025/04/17 23:29:33 by noaddino          #+#    #+#             */
+/*   Updated: 2025/04/17 23:30:59 by noaddino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, const char *src)
-{
-	int	i;
-	int	j;
+#include "libft.h"
 
-	i = 0;
-	while (dest[i])
-		i++;
-	j = 0;
-	while (src[j])
-	{
-		dest[i + j] = src[j];
-		j++;
-	}
-	dest[i + j] = '\0';
-	return (dest);
+size_t	ft_get_malloc_size(void *ptr)
+{
+	if (!ptr)
+		return (0);
+	return ((((t_memheader *)ptr) - 1)->size);
+}
+
+void	*ft_malloc(size_t size)
+{
+	t_memheader	*header;
+
+	header = (t_memheader *)malloc(sizeof(t_memheader) + size);
+	if (!header)
+		return (NULL);
+	header->size = size;
+	return (header + 1);
 }

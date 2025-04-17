@@ -6,7 +6,7 @@
 /*   By: noaddino <noaddino@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 16:37:14 by noaddino          #+#    #+#             */
-/*   Updated: 2025/04/10 16:40:32 by noaddino         ###   ########.fr       */
+/*   Updated: 2025/04/17 23:38:21 by noaddino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,29 @@ int		ft_putnbr_unsigned(unsigned int n);
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE	128
 # endif
+
 char	*get_next_line(int fd);
-
-
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strcat(char *dest, const char *src);
 
+typedef struct s_memheader
+{
+	size_t	size;
+}	t_memheader;
+
+void	*ft_malloc(size_t size);
+void	ft_free(void *ptr);
+void	*ft_realloc(void *ptr, size_t new_size);
+size_t	ft_get_malloc_size(void *ptr);
+
+typedef struct s_lazy_allocator_segment
+{
+	void							*ptr;
+	struct s_lazy_allocator_segment	*next;
+}	t_seg;
+typedef t_seg	t_lazy_allocator;
+t_seg	*create_lazy_allocator_segment(size_t size);
+void	*allocate_from_lazy_allocator(t_seg **allocator, size_t size);
+void	free_from_lazy_allocator(t_seg **allocator, void *ptr);
+void	free_lazy_allocator(t_seg **allocator);
 #endif

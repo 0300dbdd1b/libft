@@ -50,6 +50,10 @@ SRC     =	ft_isalpha.c	\
 			get_next_line_utils.c		\
 			ft_strcpy.c					\
 			ft_strcat.c					\
+			ft_malloc.c					\
+			ft_free.c					\
+			ft_realloc.c				\
+			lazy-allocator.c			\
 
 
 OBJS		= $(SRC:.c=.o)

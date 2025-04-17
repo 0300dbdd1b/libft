@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noaddino <noaddino@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 23:40:01 by noaddino          #+#    #+#             */
-/*   Updated: 2025/04/17 23:40:02 by noaddino         ###   ########.fr       */
+/*   Created: 2025/04/17 23:31:34 by noaddino          #+#    #+#             */
+/*   Updated: 2025/04/17 23:32:28 by noaddino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, const char *src)
-{
-	int	i;
-	int	j;
+#include "libft.h"
 
-	i = 0;
-	while (dest[i])
-		i++;
-	j = 0;
-	while (src[j])
-	{
-		dest[i + j] = src[j];
-		j++;
-	}
-	dest[i + j] = '\0';
-	return (dest);
+void	ft_free(void *ptr)
+{
+	t_memheader	*header;
+
+	if (!ptr)
+		return ;
+	header = ((t_memheader *)ptr) - 1;
+	free(header);
 }
