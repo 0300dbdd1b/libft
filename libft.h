@@ -18,6 +18,9 @@
 # include <stdlib.h>	// malloc, free
 # include <stdarg.h>	// va_args
 # include <fcntl.h>		//open
+# ifndef OPEN_MAX
+#  define OPEN_MAX _SC_OPEN_MAX
+# endif
 
 // ---------- Partie 1 : Fonctions Libc ----------
 int		ft_isalpha(int c);
