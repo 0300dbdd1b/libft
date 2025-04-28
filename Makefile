@@ -57,10 +57,11 @@ SRC     =	ft_isalpha.c	\
 
 
 OBJS		= $(SRC:.c=.o)
-CC      = cc
-CFLAGS  = -Wall -Wextra -Werror
-AR      = ar rcs
-RM      = rm -f
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror
+DEBUG_FLAGS	= -pedantic -fsanitize=address,undefined
+AR			= ar rcs
+RM			= rm -f
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -77,3 +78,6 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+debug: fclean
+	$(MAKE) CFLAGS="$(CFLAGS) $(DEBUG_FLAGS)" all
