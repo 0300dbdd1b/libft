@@ -59,7 +59,11 @@ SRC     =	ft_isalpha.c	\
 OBJS		= $(SRC:.c=.o)
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
-DEBUG_FLAGS	= -pedantic -fsanitize=address,undefined
+LDFLAGS		=
+
+DEBUG_CFLAGS	= -pedantic-errors -fsanitize=address,undefined
+DEBUG_LDFLAGS	= -fsanitize=address,undefined
+
 AR			= ar rcs
 RM			= rm -f
 
@@ -80,4 +84,4 @@ fclean: clean
 re: fclean all
 
 debug: fclean
-	$(MAKE) CFLAGS="$(CFLAGS) $(DEBUG_FLAGS)" all
+	$(MAKE) CFLAGS="$(CFLAGS) $(DEBUG_CFLAGS)" LDFLAGS="$(LDFLAGS) $(DEBUG_LDFLAGS)" all
